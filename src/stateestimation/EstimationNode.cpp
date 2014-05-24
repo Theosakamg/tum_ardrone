@@ -246,7 +246,6 @@ void EstimationNode::vidCb(const sensor_msgs::ImageConstPtr img)
 }
 void EstimationNode::ptamCb(const std_msgs::StringConstPtr str)
 {
-	//printf("Received: %d\n",str->data.length());
 	if (str->data.length() > 2 && str->data.substr(0,5) == "reset")
 	{
 		printf("Reset\n");
@@ -404,8 +403,8 @@ void EstimationNode::Loop()
 
              for(unsigned int i=0 ; i < point_cloud.width; i++)
              {
-                     float pos[] = {mpl[i][0], mpl[i][1], mpl[i][2]};
-                     memcpy(dat, pos ,3*sizeof(float));
+                     double pos[] = {mpl[i][0], mpl[i][1], mpl[i][2]};
+                     memcpy(dat, pos ,3*sizeof(double));
 			
 			//DPG 20-MARCH-2014
                      //uint32_t colorlvl = 0xffffffff;
@@ -681,7 +680,7 @@ void EstimationNode::reSendInfo()
 	// parse PTAM message
 	std::string ptamMsg = ptamWrapper->lastPTAMMessage;
 	int kf, kp, kps[4], kpf[4];
-	int pos = ptamMsg.find("Found: ");
+	uint pos = ptamMsg.find("Found: ");
 	int found = 0;
 	if(pos != std::string::npos)
 		found = sscanf(ptamMsg.substr(pos).c_str(),"Found: %d/%d %d/%d %d/%d %d/%d Map: %dP, %dKF",
@@ -693,7 +692,7 @@ void EstimationNode::reSendInfo()
 	else
 		snprintf(bufp,200,"Map: -");
 
-	lastNavdataReceived.batteryPercent;
+	//lastNavdataReceived.batteryPercent;
 
 	std::string status = "";
 	switch(	lastNavdataReceived.state)

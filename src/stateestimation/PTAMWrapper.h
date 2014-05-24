@@ -158,7 +158,7 @@ public:
 
 	bool handleCommand(std::string s);
 	bool mapLocked;
-	int maxKF;
+	uint maxKF;
 	static pthread_mutex_t navInfoQueueCS; //pthread_mutex_lock( &cs_mutex );
 	static pthread_mutex_t shallowMapCS; //pthread_mutex_lock( &cs_mutex );
 
