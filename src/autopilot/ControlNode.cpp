@@ -192,7 +192,7 @@ void ControlNode::popNextCommand(const tum_ardrone::filter_stateConstPtr statePt
 		// print me
 		ROS_INFO("executing command: %s",command.c_str());
 
-		int p;
+		uint32_t p;
 		char buf[100];
 		float parameters[10];
 

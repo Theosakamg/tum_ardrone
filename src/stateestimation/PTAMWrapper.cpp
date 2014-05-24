@@ -812,7 +812,7 @@ TooN::Vector<3> PTAMWrapper::evalNavQue(unsigned int from, unsigned int to, bool
 			cur++
 			)
 	{
-		int frontStamp = getMS(cur->header.stamp);
+	    uint32_t frontStamp = getMS(cur->header.stamp);
 		if(frontStamp < from)		// packages before: delete
 		{
 			//navInfoQueue.pop_front();
