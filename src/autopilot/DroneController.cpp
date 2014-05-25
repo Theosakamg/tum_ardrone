@@ -31,7 +31,17 @@ DroneController::DroneController(void)
 	targetValid = false;
 	last_err[2] = 0;
 	lastTimeStamp = 0;
+	scaleAccuracy = 0;
+	targetSetAtClock = 0;
+	ptamIsGood = false;
 
+	Ki_yaw = Kd_yaw = Kp_yaw = 0;
+	Ki_gaz = Kd_gaz = Kp_gaz = 0;
+	Ki_rp  = Kd_rp  = Kp_rp  = 0;
+	max_yaw = max_rp = max_gaz_rise = max_gaz_drop = 0;
+
+	rise_fac = 0;
+	agressiveness = 0;
 	hoverCommand.gaz = hoverCommand.pitch = hoverCommand.roll = hoverCommand.yaw = 0;
 
 	node = NULL;
